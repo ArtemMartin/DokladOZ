@@ -21,21 +21,24 @@ import javax.xml.crypto.Data;
 public class MakerMessage {
 
     String nomerZeli;
-    String koordZeli;
     String ktoStrelial;
     String kalibr;
     String snariad;
     String rashod;
     String tipZeli;
+    String sistema;
+    String podrazdelenie;
 
-    public MakerMessage(String nomerZeli, String koordZeli, String ktoStrelial, String kalibr, String snariad, String rashod, String tipZeli) {
+    public MakerMessage(String nomerZeli, String ktoStrelial, String kalibr,
+            String snariad, String rashod, String tipZeli, String sistema, String podrazdelenie) {
         this.nomerZeli = nomerZeli;
-        this.koordZeli = koordZeli;
         this.ktoStrelial = ktoStrelial;
         this.kalibr = kalibr;
         this.snariad = snariad;
         this.rashod = rashod;
         this.tipZeli = tipZeli;
+        this.sistema = sistema;
+        this.podrazdelenie = podrazdelenie;
     }
 
     public String getKoordZeli() {
@@ -69,7 +72,8 @@ public class MakerMessage {
                 + getKvadrat() + "Ц" + this.nomerZeli + " " + getKoordZeli()
                 + ". Разведывательным огневым комплексом вскрыто "
                 + this.tipZeli + " противника, нанесено огневое поражение артиллерией 1194 мсп расчётом "
-                + this.ktoStrelial + ". В результате огневого поражения  противник подавлен."
+                + this.sistema + " '" + this.ktoStrelial + "' (" + this.podrazdelenie
+                + "). В результате огневого поражения  противник подавлен."
                 + " Расход " + this.kalibr + " " + this.snariad + " - " + this.rashod
                 + ". Средства контроля ОПП - БПЛА ККТ.";
         return msg;

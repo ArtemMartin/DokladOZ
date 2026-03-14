@@ -19,12 +19,13 @@ public class DokladOZ {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MakerMessage makerMessage = new MakerMessage(osnFrame.getPoleNomZeli().getText(),
-                        osnFrame.getPoleKoord().getText(),
                         osnFrame.getKtoStrelial().getText(),
                         osnFrame.getPoleKalibr().getText(),
                         osnFrame.getPoleTipBK().getText(),
                         osnFrame.getPoleRashod().getText(),
-                        osnFrame.getPoleTipZeli().getText());
+                        osnFrame.getPoleTipZeli().getText(), 
+                        (String) osnFrame.getBoxSistema().getSelectedItem(),
+                        (String)osnFrame.getBoxPodrazdelenie().getSelectedItem());
                 osnFrame.setAreaVuvodMSG(makerMessage.getMessage());
             }
         });
