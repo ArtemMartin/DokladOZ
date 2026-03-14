@@ -7,12 +7,8 @@ package com.mycompany.dokladoz;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.Date;
-import javax.xml.crypto.Data;
 
 /**
  *
