@@ -119,7 +119,7 @@ public class MakerMessage {
         String dataTime;
         Calendar date = Calendar.getInstance();
 
-        int hour = date.get(Calendar.HOUR);
+        int hour = date.get(Calendar.HOUR_OF_DAY);
         int minyt = date.get(Calendar.MINUTE);
         String strMinyt;
         if (minyt < 10) {
