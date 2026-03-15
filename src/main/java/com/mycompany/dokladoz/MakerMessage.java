@@ -8,7 +8,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,9 +42,9 @@ public class MakerMessage {
     public String getKoordZeli() {
         String koord = " ";
         if (!this.nomerZeli.isEmpty()) {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\YO_NA\\Zeli"), "UTF-8"))) {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("D:\\YO_NA\\Zeli"), StandardCharsets.UTF_8))) {
                 String line;
-                String mas[];
+                String[] mas;
                 int y;
                 while ((line = reader.readLine()) != null) {
                     mas = line.split(",");
@@ -55,7 +57,7 @@ public class MakerMessage {
                     }
                 }
             } catch (IOException ex) {
-                ex.getMessage();
+                Logger.getLogger(ex.getMessage());
                 return koord;
             }
         }
@@ -76,7 +78,7 @@ public class MakerMessage {
     }
 
     public String getKvadrat() {
-        String kvadrat = "";
+        String kvadrat;
         String[] str = getKoordZeli().split(" ");
         int x = Integer.parseInt(str[0]);
         int y = Integer.parseInt(str[1]);
