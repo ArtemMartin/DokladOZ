@@ -55,4 +55,24 @@
         <maven.compiler.release>17</maven.compiler.release>
         <exec.mainClass>com.mycompany.dokladoz.DokladOZ</exec.mainClass>
     </properties>
+    <build>
+        <plugins>
+            <!-- Плагин для создания "толстого" JAR -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.4.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Указываем класс с методом main для запуска -->
+                            <mainClass>com.mycompany.dokladoz.DokladOZ</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
