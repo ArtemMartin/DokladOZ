@@ -13,11 +13,11 @@ import java.util.Calendar;
 import java.util.logging.Logger;
 
 /**
- *
  * @author Кузьмич
  */
 public class MakerMessage {
 
+    static String time;
     String nomerZeli;
     String ktoStrelial;
     String kalibr;
@@ -26,10 +26,12 @@ public class MakerMessage {
     String tipZeli;
     String sistema;
     String podrazdelenie;
+    String nomerPoPoriadky;
 
-    public MakerMessage(String nomerZeli, String ktoStrelial, String kalibr,
-            String snariad, String rashod, String tipZeli, String sistema, String podrazdelenie) {
+    public MakerMessage(String nomerZeli, String nomerPoPoriadky, String ktoStrelial, String kalibr,
+                        String snariad, String rashod, String tipZeli, String sistema, String podrazdelenie) {
         this.nomerZeli = nomerZeli;
+        this.nomerPoPoriadky = nomerPoPoriadky;
         this.ktoStrelial = ktoStrelial;
         this.kalibr = kalibr;
         this.snariad = snariad;
@@ -64,7 +66,7 @@ public class MakerMessage {
         return koord;
     }
 
-    public String getMessage() {
+    public String getMessageVskruto() {
         String msg;
         msg = getDataTime() + " в районе н.п.Константиновка "
                 + getKvadrat() + "Ц" + this.nomerZeli + " " + getKoordZeli()
@@ -74,6 +76,21 @@ public class MakerMessage {
                 + "). В результате огневого поражения  противник подавлен."
                 + " Расход " + this.kalibr + " " + this.snariad + " - " + this.rashod
                 + ". Средства контроля ОПП - БПЛА ККТ.";
+        ExcelWriter.go(nomerPoPoriadky, time, nomerZeli, tipZeli, getKvadrat(), ktoStrelial
+                + " " + podrazdelenie, rashod, "подавлена", "подано");
+        return msg;
+    }
+
+    public String getMessageIzoliacia() {
+        String msg;
+        msg = getDataTime() + " в районе н.п.Константиновка "
+                + getKvadrat() + "Ц" + this.nomerZeli + " " + getKoordZeli()
+                + ". В рамках изоляции района, нанесено огневое поражение артиллерией 1194 мсп расчётом "
+                + this.sistema + " '" + this.ktoStrelial + "' (" + this.podrazdelenie
+                + "). В результате огневого поражения  противник подавлен."
+                + " Расход " + this.kalibr + " " + this.snariad + " - " + this.rashod + ".";
+        ExcelWriter.go(nomerPoPoriadky, time, nomerZeli, tipZeli, getKvadrat(), ktoStrelial
+                + " " + podrazdelenie, rashod, "подавлена", "подано");
         return msg;
     }
 
@@ -123,6 +140,13 @@ public class MakerMessage {
 
         int hour = date.get(Calendar.HOUR_OF_DAY);
         int minyt = date.get(Calendar.MINUTE);
+
+        if (minyt < 10) {
+            time = hour + ":" + "0" + minyt;
+        } else {
+            time = hour + ":" + minyt;
+        }
+
         String strMinyt;
         if (minyt < 10) {
             strMinyt = 0 + "" + minyt;
