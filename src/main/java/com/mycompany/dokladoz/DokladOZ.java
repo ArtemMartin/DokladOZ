@@ -23,7 +23,7 @@ public class DokladOZ {
             public void actionPerformed(ActionEvent e) {
                 MakerMessage makerMessage = new MakerMessage(osnFrame.getPoleNomZeli().getText(),
                         osnFrame.getTfNomPoPor().getText(),
-                        osnFrame.getKtoStrelial().getText(),
+                        (String)osnFrame.getKtoStrelial().getSelectedItem(),
                         osnFrame.getPoleKalibr().getText(),
                         osnFrame.getPoleTipBK().getText(),
                         osnFrame.getPoleRashod().getText(),
